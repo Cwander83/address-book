@@ -1,0 +1,87 @@
+.ellipse {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+}
+.rectangle {
+  // width and height are passed as props
+  background: linear-gradient(0deg, #ffffff, #ffffff),
+    linear-gradient(0deg, #ffffff, #ffffff), #ffffff;
+}
+
+.ellipse-one {
+  // width and height are passed as props
+  background: #579aff;
+
+  .rectangle-two {
+    margin-left: -2px;
+    transform: rotate(90deg);
+  }
+}
+
+.ellipse-two {
+  width: 24px;
+  height: 24px;
+  background: #ff5757;
+  margin-left: 14px;
+
+  .rectangle-three {
+    width: 1.5px;
+    height: 18px;
+    margin-left: -2px;
+    transform: rotate(90deg);
+  }
+}
+
+.button-text {
+  width: 120px;
+  height: 36px;
+  color: white;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  margin: 15px;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.delete-btn {
+  background-color: #ff5757;
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.cancel-btn {
+  color: black;
+  background-color: #f9fbff;
+  border: 1px solid #579aff;
+}
+
+.save-btn {
+  background-color: #579aff;
+}
+
+.add-email-btn {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: none;
+  margin: 5px 0;
+  padding: 0;
+
+  p {
+    font-size: 18px;
+    line-height: 22px;
+    padding-left: 10px;
+    color: #579aff;
+    margin: 0 0 2px 0;
+  }
+}
+
+.save-email-btn {
+  margin: 0 0 0 5px;
+  height: 38px;
+}

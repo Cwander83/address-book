@@ -1,0 +1,51 @@
+.card-section {
+  flex-direction: row;
+  height: auto;
+}
+
+.form {
+  flex-direction: column;
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+
+.email-section {
+  align-items: center;
+  justify-content: flex-start;
+  
+  .input-group {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+}
+.inputs-section,
+form {
+  display: flex;
+
+  .input-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 70px;
+
+    label {
+      font-size: 12px;
+      height: 14px;
+      padding: 6px 0;
+    }
+
+    input {
+      width: 345px;
+      background-color: #f9fbff;
+      border: 1px solid #d7e7ff;
+      font-size: 18px;
+      line-height: 22px;
+      padding: 7px 12px;
+      color: #444444;
+    }
+  }
+}
