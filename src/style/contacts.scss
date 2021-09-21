@@ -21,9 +21,8 @@
     flex-direction: column;
     padding: 0;
     list-style-type: none;
-    
-    li {
 
+    li {
       p {
         // *********  background color if active
         min-height: 35px;
@@ -33,6 +32,7 @@
         margin: 0;
         border: none;
         background-color: transparent;
+        cursor: pointer;
       }
     }
     li:hover {

@@ -1,3 +1,6 @@
+// TODO: cursors on all buttons
+// * fixed
+
 .ellipse {
   cursor: pointer;
   display: flex;
@@ -45,6 +48,7 @@
   margin: 15px;
   font-size: 20px;
   line-height: 24px;
+  cursor: pointer;
 }
 
 .delete-btn {
@@ -71,6 +75,7 @@
   border: none;
   margin: 5px 0;
   padding: 0;
+  cursor: pointer;
 
   p {
     font-size: 18px;

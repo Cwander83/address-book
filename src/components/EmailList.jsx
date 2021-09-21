@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext ,useEffect } from 'react';
 
 // components
 import { AddContactBtn } from './AddContactBtn';
@@ -12,13 +12,16 @@ import '../style/buttons.scss';
 import { ContactContext } from '../context/context';
 
 export const EmailList = () => {
-  
   const [showInput, setShowInput] = useState(false);
 
   const { activeContact } = useContext(ContactContext);
 
   // state for mouse hover to show delete btn
   const [selectedEmail, setSelectedEmail] = useState('');
+
+  useEffect(() => {
+    setShowInput(false);
+  }, [activeContact]);
 
   return (
     <div className="email-container">
