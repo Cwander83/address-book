@@ -11,16 +11,24 @@
     flex-direction: column;
     margin-top: 10px;
     width: 100%;
+    // input::placeholder {
+    //   color: #444444;
+    //   opacity: 1;
+    // }
   }
 }
 
 .email-section {
   align-items: center;
   justify-content: flex-start;
-  
+
   .input-group {
     flex-direction: row;
     flex-wrap: nowrap;
+    .email-input {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 .inputs-section,
@@ -47,5 +55,13 @@ form {
       padding: 7px 12px;
       color: #444444;
     }
+    input::placeholder {
+      color: #444444;
+      opacity: 1;
+    }
   }
+}
+.error-message {
+  padding: 2px 5px;
+  color: red;
 }

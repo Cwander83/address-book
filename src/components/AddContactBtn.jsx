@@ -8,6 +8,7 @@ import { ContactContext } from '../context/context';
 
 export const AddContactBtn = ({ width, height, ellipsis }) => {
   const { setShowNewContact, clearActiveContact } = useContext(ContactContext);
+  
   return (
     <div
       onClick={() => {

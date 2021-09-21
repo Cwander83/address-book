@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 
 // react hooks form library
 import { useForm } from 'react-hook-form';
+
+// context api
+import { ContactContext } from '../context/context';
 
 // stylesheet
 import '../style/card.scss';
@@ -10,6 +13,8 @@ import '../style/newContact.scss';
 import '../style/buttons.scss';
 
 const NewContactForm = () => {
+  const { addContact } = useContext(ContactContext);
+
   const {
     register,
     handleSubmit,
@@ -23,7 +28,9 @@ const NewContactForm = () => {
       lastName: data.lastName,
       emails: [data.email],
     };
-    console.log(newContact);
+
+    addContact(newContact);
+
     reset();
   };
 
@@ -36,32 +43,49 @@ const NewContactForm = () => {
           <input
             type="text"
             {...register('firstName', {
-              required: true,
-              min: 2,
+              required: '* required',
+              minLength: {
+                value: 2,
+                message: '* first name minimum characters is 2',
+              },
+              pattern:{value:/^[A-Za-z]+$/, message: '* only letters please'},
               maxLength: 80,
             })}
           />
-          <span>{errors.firstName && '* first name is required'}</span>
+          <span className="error-message">
+            {errors.firstName && errors.firstName.message}
+          </span>
         </div>
         <div className="input-group">
           <label htmlFor="last-name">Last Name</label>
           <input
             type="text"
             {...register('lastName', {
-              required: true,
-              min: 2,
+              required: '* required',
+              minLength: {
+                value: 2,
+                message: '* last name minimum characters is 2',
+              },
+              pattern:{value:/^[A-Za-z]+$/, message: '* only letters please'},
               maxLength: 100,
             })}
           />
-          <span>{errors.lastName && '* last name is required'}</span>
+          <span className="error-message">
+            {errors.lastName && errors.lastName.message}
+          </span>
         </div>
         <div className="input-group">
           <label htmlFor="email">Email</label>
           <input
             type="email"
-            {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
+            {...register('email', {
+              required: '* this is required',
+              pattern: { value: /^\S+@\S+$/i, message: '* Invalid Email' },
+            })}
           />
-          <span>{errors.email && '* email is required'}</span>
+          <span className="error-message">
+            {errors.email && errors.email.message}
+          </span>
         </div>
 
         <button type="submit" className="button-text save-btn">

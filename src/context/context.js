@@ -10,7 +10,6 @@ export const defaultValue = {
   addContact: () => {},
   updateContact: () => {},
   removeContact: () => {},
-  addEmail: () => {},
   deleteEmail: () => {},
 };
 
@@ -45,7 +44,8 @@ const ContactProvider = (props) => {
       })
       .finally(() => {
         setIsLoading(false);
-      });
+      })
+      .catch((err) => console.error(err));
   }, [setContacts]);
 
   // POST takes new contact and adds to DB
@@ -55,10 +55,15 @@ const ContactProvider = (props) => {
 
       await fetch(`${url}`, {
         method: 'POST',
-        body: JSON.stringify({ contact }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(contact),
       })
-        .then((response) => console.log(response))
-        .finally(() => setIsLoading(false));
+        .then(() => fetchContacts())
+
+        .finally(() => setIsLoading(false))
+        .catch((err) => console.error(err));
     },
     [setContacts, contacts]
   );
@@ -84,12 +89,13 @@ const ContactProvider = (props) => {
         })
         .finally(() => {
           setIsLoading(false);
-        });
+        })
+        .catch((error) => console.error(error));
     },
     [setContacts, contacts]
   );
 
-  // UPDATE / DELETE  removes email from contact 
+  // UPDATE / DELETE  removes email from contact
   const deleteEmail = useCallback(
     async (email, id) => {
       setIsLoading(true);
@@ -121,7 +127,9 @@ const ContactProvider = (props) => {
         body: JSON.stringify(newContact),
       })
         .then((response) => response.json())
+        .then((response) => setActiveContact(response))
         .then(() => fetchContacts())
+
         .finally(() => {
           setIsLoading(false);
         })
@@ -134,7 +142,6 @@ const ContactProvider = (props) => {
   // PUT modifies info in contact object
   const updateContact = useCallback(
     async (newContact) => {
-
       setIsLoading(true);
 
       await fetch(`${url}${newContact.id}`, {
@@ -158,7 +165,7 @@ const ContactProvider = (props) => {
 
         .catch((err) => console.error(err));
     },
-    [setContacts]
+    [setContacts, contacts]
   );
 
   // resets active contact to default state
